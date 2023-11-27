@@ -1,3 +1,4 @@
+package ABC;
 class GameView {
     private GameModel model;
 
@@ -7,4 +8,5 @@ class GameView {
     }
 
     // Add methods to update the GUI based on the model state
+
 }
