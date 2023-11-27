@@ -58,5 +58,27 @@ class GameModel {
         return creaturesEL1;
     }
 
+    public void exploreArea1() {
+        // Implement logic for exploring Area 1
+        // You can add logic to encounter creatures and perform other actions
+        List<Creature> encounteredCreatures = getCreaturesEL1(); // Use the existing method
+        Area1Screen area1Screen = new Area1Screen(encounteredCreatures);
+        area1Screen.setVisible(true);
+    }
+
+    public void exploreArea2() {
+        // Implement logic for exploring Area 2
+        // You can add logic to encounter creatures and perform other actions
+        Area2Screen area2Screen = new Area2Screen();
+        area2Screen.setVisible(true);
+    }
+
+    public void exploreArea3() {
+        // Implement logic for exploring Area 3
+        // You can add logic to encounter creatures and perform other actions
+        Area3Screen area3Screen = new Area3Screen();
+        area3Screen.setVisible(true);
+    }
+
     // Add other methods and data relevant to the game logic
 }

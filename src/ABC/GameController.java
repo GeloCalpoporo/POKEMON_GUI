@@ -31,15 +31,15 @@ public class GameController {
         switch (choice) {
             case 0:
                 // Explore Area 1
-                JOptionPane.showMessageDialog(view, "Exploring Area 1");
+                model.exploreArea1();
                 break;
             case 1:
                 // Explore Area 2
-                JOptionPane.showMessageDialog(view, "Exploring Area 2");
+                model.exploreArea2();
                 break;
             case 2:
                 // Explore Area 3
-                JOptionPane.showMessageDialog(view, "Exploring Area 3");
+                model.exploreArea3();
                 break;
             default:
                 // Invalid choice
