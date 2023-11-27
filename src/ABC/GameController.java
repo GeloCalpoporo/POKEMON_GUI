@@ -1,85 +1,77 @@
 package ABC;
 
-import java.util.ArrayList;
+import javax.swing.*;
 import java.util.List;
-import java.util.Scanner;
 
 public class GameController {
     private GameModel model;
     private GameView view;
-    private Scanner scanner;
-    List<Creature> starterCreatures = new ArrayList<>();
-    CreatureList creatureList = new CreatureList();
+
     public GameController(GameModel model, GameView view) {
         this.model = model;
         this.view = view;
-        this.scanner = new Scanner(System.in);
     }
 
-    public void initGame() {
-        // Initialize the game, e.g., choose starter creature, set up initial state
-        // For example, let's add a starter creature to the inventory
-        Creature starterCreature = new Creature(1, "Starter", "Type", "Family", 1);
-        model.getInventory().addCreature(starterCreature);
+    public void displayInventory() {
+        // Display inventory information using JOptionPane
+        StringBuilder inventoryText = new StringBuilder("Inventory:\n");
+        for (Creature creature : model.getInventory().getCreatures()) {
+            inventoryText.append(creature.getName()).append("\n");
+        }
 
-        // Set the starter creature as the active creature
-        model.getInventory().setActiveCreature(starterCreature);
-
-        // Update the view based on the initial state
-        view.updateView();
+        JOptionPane.showMessageDialog(view, inventoryText.toString(), "Inventory", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void runGame() {
-        int userChoice;
+    public void displayAreaOptions() {
+        // Display area exploration options using JOptionPane
+        Object[] options = {"Area 1", "Area 2", "Area 3"};
+        int choice = JOptionPane.showOptionDialog(view, "Choose an area to explore:", "Explore Area",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
-        do {
-            // Get user input
-            System.out.println("Choose what you want to do:");
-            System.out.println("1. View Inventory");
-            System.out.println("2. Explore An Area");
-            System.out.println("3. Evolve Creature");
-            System.out.println("4. Exit");
-            System.out.println("Choose a number:");
-            userChoice = scanner.nextInt();
-
-            // Handle user input and update model/view accordingly
-            switch (userChoice) {
-                case 1:
-                    // View Inventory
-                    view.displayInventory(model.getInventory());
-                    break;
-                case 2:
-                    // Explore an Area
-                    view.displayExploreAreaMenu();
-                    int areaChoice = scanner.nextInt();
-
-                    // Handle area exploration logic based on the choice
-                    if (areaChoice == 1) {
-                        // Create an instance of Area1
-                        Area1 area1 = new Area1(model.getInventory(), model.getInventory().getActiveCreature(), model.getCreaturesEL1());
-                        // Explore Area1
-                        area1.exploreArea();
-                    } else {
-                        System.out.println("Invalid area choice.");
-                    }
-                    // Update model/view accordingly
-                    break;
-                case 3:
-                    // Evolve Creature
-                    view.displayEvolveCreatureMenu();
-                    // Handle creature evolution logic
-                    // Update model/view accordingly
-                    break;
-                case 4:
-                    System.out.println("Goodbye!");
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-            }
-
-            // Update the view after each user action
-            view.updateView();
-
-        } while (userChoice != 4);
+        switch (choice) {
+            case 0:
+                // Explore Area 1
+                JOptionPane.showMessageDialog(view, "Exploring Area 1");
+                break;
+            case 1:
+                // Explore Area 2
+                JOptionPane.showMessageDialog(view, "Exploring Area 2");
+                break;
+            case 2:
+                // Explore Area 3
+                JOptionPane.showMessageDialog(view, "Exploring Area 3");
+                break;
+            default:
+                // Invalid choice
+                JOptionPane.showMessageDialog(view, "Invalid area choice", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
+
+    public void displayEvolveOptions() {
+        // Display creature evolution options using JOptionPane
+        List<Creature> encounteredCreatures = model.getEncounteredCreatures();
+
+        // Convert List<Creature> to array for JComboBox
+        Creature[] creaturesArray = encounteredCreatures.toArray(new Creature[0]);
+
+        JComboBox<Creature> creature1ComboBox = new JComboBox<>(creaturesArray);
+        JComboBox<Creature> creature2ComboBox = new JComboBox<>(creaturesArray);
+
+        Object[] message = {
+                "Select the first creature:", creature1ComboBox,
+                "Select the second creature:", creature2ComboBox
+        };
+
+        int option = JOptionPane.showConfirmDialog(view, message, "Evolve Creature", JOptionPane.OK_CANCEL_OPTION);
+
+        if (option == JOptionPane.OK_OPTION) {
+            int indexCreature1 = creature1ComboBox.getSelectedIndex();
+            int indexCreature2 = creature2ComboBox.getSelectedIndex();
+
+            // Notify the model to evolve creatures
+            model.evolveCreatures(indexCreature1, indexCreature2);
+        }
+    }
+
 }
+

@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" name="Changes" comment="UPDATED">
-      <change afterPath="$PROJECT_DIR$/src/ABC/Area.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ABC/Area1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ABC/Area1Screen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ABC/BattlePhase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ABC/Evolution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ABC/EvolutionResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ABC/EvolveEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ABC/GameGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABC/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/GameModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ABC/MAINGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/MAINGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,12 +20,27 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "GeloCalpoporo"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="08fe1d1e-32de-4634-8c0c-45c5108d7997" />
+        <option name="url" value="https://github.com/GeloCalpoporo/POKEMON_GUI.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 4
@@ -63,7 +74,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1701057059553</updated>
-      <workItem from="1701057060606" duration="8648000" />
+      <workItem from="1701057060606" duration="14309000" />
     </task>
     <task id="LOCAL-00001" summary="A">
       <option name="closed" value="true" />
@@ -97,7 +108,31 @@
       <option name="project" value="LOCAL" />
       <updated>1701058401184</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="UPDATED">
+      <option name="closed" value="true" />
+      <created>1701070673891</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701070673891</updated>
+    </task>
+    <task id="LOCAL-00006" summary="UPDATED">
+      <option name="closed" value="true" />
+      <created>1701070686670</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1701070686670</updated>
+    </task>
+    <task id="LOCAL-00007" summary="UPDATED">
+      <option name="closed" value="true" />
+      <created>1701070709578</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1701070709578</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

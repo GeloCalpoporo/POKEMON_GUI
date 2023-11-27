@@ -1,23 +1,21 @@
 package ABC;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class MAINGame {
     public static void main(String[] args) {
         // Create the model
         GameModel model = new GameModel();
 
         // Create the view
-        GameView view = new GameView(model);
+        GameView view = new GameView(model, null); // Pass null initially
 
-        // Create the controller
+        // Create the controller and set it in the view
         GameController controller = new GameController(model, view);
+        view.setController(controller);
 
-        // Initialize the game
-        controller.initGame();
+        // Set the controller in the view
+        view.setController(controller);
 
-        // Run the game
-        controller.runGame();
-    }}
+        // Display the GUI
+        view.setVisible(true);
+    }
+}
