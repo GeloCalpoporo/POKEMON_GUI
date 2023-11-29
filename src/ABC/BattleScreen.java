@@ -7,12 +7,7 @@ import java.awt.event.ActionListener;
 
 public class BattleScreen extends JFrame {
 
-    private Creature activeCreature;
-    private Creature enemy;
-    private int enemyHealth;
-    private Inventory userInventory;
-    private int userActions;
-
+    private GameModel gameModel; // Reference to the combined GameModel
     // UI Components
     private JLabel activeCreatureLabel;
     private JLabel enemyInfoLabel;
@@ -22,20 +17,16 @@ public class BattleScreen extends JFrame {
     private JButton catchButton;
     private JButton runButton;
 
-    public BattleScreen(Creature activeCreature, Creature enemy, Inventory userInventory) {
-        this.activeCreature = activeCreature;
-        this.enemy = enemy;
-        this.userInventory = userInventory;
-        this.enemyHealth = 50;
-        this.userActions = 3; // Maximum allowed actions
+    public BattleScreen(GameModel gameModel) {
+        this.gameModel = gameModel;
 
         setTitle("Battle Screen");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        activeCreatureLabel = new JLabel("Active Creature: " + activeCreature.getName() + " (EL" + activeCreature.getEvolutionLevel() + ", " + activeCreature.getType() + ")");
-        enemyInfoLabel = new JLabel("Enemy: " + enemy.getName() + " (EL" + enemy.getEvolutionLevel() + ", " + enemy.getType() + ")");
-        enemyHealthLabel = new JLabel("Enemy Health: " + enemyHealth);
+        activeCreatureLabel = new JLabel("Active Creature: " + gameModel.getActiveCreature().getName() + " (EL" + gameModel.getActiveCreature().getEvolutionLevel() + ", " + gameModel.getActiveCreature().getType() + ")");
+        enemyInfoLabel = new JLabel("Enemy: " + gameModel.getEnemy().getName() + " (EL" + gameModel.getEnemy().getEvolutionLevel() + ", " + gameModel.getEnemy().getType() + ")");
+        enemyHealthLabel = new JLabel("Enemy Health: " + gameModel.getEnemyHealth());
 
         attackButton = new JButton("Attack");
         swapButton = new JButton("Swap");
@@ -85,27 +76,77 @@ public class BattleScreen extends JFrame {
         setVisible(true);
     }
 
-    private void performAttack() {
-        int damage = calculateDamage();
-        enemyHealth -= damage;
-        JOptionPane.showMessageDialog(this, "You attacked the enemy for " + damage + " damage!");
-        updateEnemyHealthLabel();
+    private void updateUI() {
+        // Update UI components based on the GameModel state
+        activeCreatureLabel.setText("Active Creature: " + gameModel.getActiveCreature().getName() + " (EL" + gameModel.getActiveCreature().getEvolutionLevel() + ", " + gameModel.getActiveCreature().getType() + ")");
+        enemyInfoLabel.setText("Enemy: " + gameModel.getEnemy().getName() + " (EL" + gameModel.getEnemy().getEvolutionLevel() + ", " + gameModel.getEnemy().getType() + ")");
+        enemyHealthLabel.setText("Enemy Health: " + gameModel.getEnemyHealth());
 
         checkBattleOutcome();
     }
 
-    private void performSwap() {
-        // Implement swap logic
-        JOptionPane.showMessageDialog(this, "SWAP option is not implemented in this example.");
+    private void checkBattleOutcome() {
+        if (gameModel.getEnemyHealth() <= 0) {
+            JOptionPane.showMessageDialog(this, "You defeated the enemy!");
+            dispose(); // Close the Battle Screen
+        } else if (gameModel.getUserActions() <= 0) {
+            JOptionPane.showMessageDialog(this, "Out of actions. Returning to the area screen.");
+            dispose(); // Close the Battle Screen
+        }
     }
+
+    private void performAttack() {
+        if (userActions == 0) {
+            JOptionPane.showMessageDialog(this, "You've reached the maximum number of attempts (3).");
+            return;
+        }
+        userActions--;
+        int damage = calculateDamage();
+        gameModel.reduceEnemyHealth(damage);
+        JOptionPane.showMessageDialog(this, "You attacked the enemy for " + damage + " damage!");
+        updateUI();
+    }
+
+    private void performSwap() {
+        // Display a dialog with a list of EL1 creatures from the user's inventory
+        List<Creature> el1Creatures = gameModel.getCreatureList().getEl1Creatures();
+
+        if (el1Creatures.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No EL1 creatures available for swapping.");
+            return;
+        }
+
+        JComboBox<Creature> creatureComboBox = new JComboBox<>(el1Creatures.toArray(new Creature[0]));
+
+        int option = JOptionPane.showConfirmDialog(this, creatureComboBox, "Swap Creature", JOptionPane.OK_CANCEL_OPTION);
+
+        if (option == JOptionPane.OK_OPTION) {
+            Creature selectedCreature = (Creature) creatureComboBox.getSelectedItem();
+
+            // Check if the selected creature is the same as the active creature
+            if (selectedCreature.equals(gameModel.getActiveCreature())) {
+                JOptionPane.showMessageDialog(this, "You can't swap with the same creature!");
+            } else {
+                // Swap the active creature with the selected creature
+                gameModel.getUserInventory().deleteCreature(selectedCreature);
+                gameModel.getUserInventory().addCreature(gameModel.getActiveCreature());
+                gameModel.setActiveCreature(selectedCreature);
+                JOptionPane.showMessageDialog(this, "Swapped to " + selectedCreature.getName() + "!");
+                updateUI();
+            }
+        }
+    }
+
+
+
 
     private void performCatch() {
         double catchRate = calculateCatchRate();
         if (catchRate > Math.random()) {
-            userInventory.addCreature(enemy);
+            gameModel.getUserInventory().addCreature(gameModel.getEnemy());
             JOptionPane.showMessageDialog(this, "You successfully caught the enemy!");
-            enemyHealth = 0; // Enemy is caught
-            updateEnemyHealthLabel();
+            gameModel.setEnemyHealth(0); // Enemy is caught
+            updateUI();
         } else {
             JOptionPane.showMessageDialog(this, "Catch attempt failed.");
         }
@@ -118,18 +159,13 @@ public class BattleScreen extends JFrame {
         dispose(); // Close the Battle Screen
     }
 
-    private void updateEnemyHealthLabel() {
-        enemyHealthLabel.setText("Enemy Health: " + enemyHealth);
-    }
-
-    private void checkBattleOutcome() {
-        if (enemyHealth <= 0) {
-            JOptionPane.showMessageDialog(this, "You defeated the enemy!");
-            dispose(); // Close the Battle Screen
-        } else if (userActions <= 0) {
-            JOptionPane.showMessageDialog(this, "Out of actions. Returning to the area screen.");
-            dispose(); // Close the Battle Screen
+    private boolean isTypeAdvantage(String attackerType, String defenderType) {
+        if ((attackerType.equals("Fire") && defenderType.equals("Grass")) ||
+                (attackerType.equals("Grass") && defenderType.equals("Water")) ||
+                (attackerType.equals("Water") && defenderType.equals("Fire"))) {
+            return true;
         }
+        return false;
     }
 
     private int calculateDamage() {
@@ -139,17 +175,10 @@ public class BattleScreen extends JFrame {
     }
 
     private double calculateCatchRate() {
-        // Implement your catch rate calculation logic here
-        // This is a placeholder, replace it with your logic
-        return 0.5;
+        // Calculate catch rate based on the specified formula
+        int enemyHealth = gameModel.getEnemyHealth();
+        return (40.0 + 50.0 - enemyHealth) / 100.0;
     }
 
-    public static void main(String[] args) {
-        // Example usage
-        Creature activeCreature = new Creature(1, "Charmander", "Fire", "SomeType", 1);
-        Creature enemy = new Creature(1, "Bulbasaur", "Grass", "SomeType", 1);
 
-        Inventory userInventory = new Inventory();
-        BattleScreen battleScreen = new BattleScreen(activeCreature, enemy, userInventory);
-    }
 }

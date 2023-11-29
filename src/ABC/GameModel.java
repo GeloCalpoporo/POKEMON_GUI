@@ -1,18 +1,28 @@
+// GameModel.java
 package ABC;
 
-import java.util.ArrayList;
 import java.util.List;
 
-class GameModel {
+public class GameModel {
     private Inventory inventory;
-    private CreatureList creatureList; // Use CreatureList directly
+    private CreatureList creatureList;
     private Evolution evolution;
 
+    // Battle-related properties
+    private Creature activeCreature;
+    private Creature enemy;
+
+    private int[] position;
+
+
+    private int enemyHealth;
+    private Inventory userInventory;
+    private int userActions;
+
     public GameModel() {
-        this.inventory = new Inventory(); // Initialize Inventory
+        this.inventory = new Inventory();
         this.creatureList = new CreatureList();
         this.evolution = new Evolution(inventory);
-        // You can add other game data and logic initialization here
     }
 
     public Inventory getInventory() {
@@ -20,65 +30,96 @@ class GameModel {
     }
 
     public List<Creature> getEncounteredCreatures() {
-        return creatureList.getAllCreatures(); // Use getAllCreatures from CreatureList
+        return creatureList.getAllCreatures();
     }
+
+    public CreatureList getCreatureList() {
+        return creatureList;
+    }
+
 
     public Evolution getEvolution() {
         return evolution;
     }
 
-    public void exploreArea() {
-        // Implement logic for exploring the chosen area
-        System.out.println("Exploring Area");
-    }
-
-    public void evolveCreatures(int indexCreature1, int indexCreature2) {
-        if (indexCreature1 >= 0 && indexCreature1 < inventory.getCreatures().size() &&
-                indexCreature2 >= 0 && indexCreature2 < inventory.getCreatures().size()) {
-            Creature creature1 = inventory.getCreatures().get(indexCreature1);
-            Creature creature2 = inventory.getCreatures().get(indexCreature2);
-
-            EvolutionResult evolutionResult = evolution.evolveCreatures(creature1, creature2);
-            if (evolutionResult.isSuccess()) {
-                System.out.println("Evolution successful! Evolved creature: " + evolutionResult.getEvolvedCreature().getName());
-            } else {
-                System.out.println("Evolution failed. Check if the selected creatures are eligible.");
-            }
-        } else {
-            System.out.println("Invalid creature indices. Please try again.");
-        }
-    }
-
-    public List<Creature> getCreaturesEL1() {
-        List<Creature> creaturesEL1 = new ArrayList<>();
-        Creature el1Creature = creatureList.getRandomEL1Creature();
-        if (el1Creature != null) {
-            creaturesEL1.add(el1Creature);
-        }
-        return creaturesEL1;
-    }
-
     public void exploreArea1() {
-        // Implement logic for exploring Area 1
-        // You can add logic to encounter creatures and perform other actions
-        List<Creature> encounteredCreatures = getCreaturesEL1(); // Use the existing method
-        Area1Screen area1Screen = new Area1Screen(encounteredCreatures);
+        List<Creature> encounteredCreatures = getEncounteredCreatures();
+        Area1Screen area1Screen = new Area1Screen(encounteredCreatures, this);
         area1Screen.setVisible(true);
     }
 
     public void exploreArea2() {
-        // Implement logic for exploring Area 2
-        // You can add logic to encounter creatures and perform other actions
-        Area2Screen area2Screen = new Area2Screen();
+        List<Creature> encounteredCreatures = getEncounteredCreatures();
+        Area2Screen area2Screen = new Area2Screen(encounteredCreatures, this);
         area2Screen.setVisible(true);
     }
 
     public void exploreArea3() {
         // Implement logic for exploring Area 3
         // You can add logic to encounter creatures and perform other actions
-        Area3Screen area3Screen = new Area3Screen();
+        List<Creature> encounteredCreatures = getEncounteredCreatures();
+        Area3Screen area3Screen = new Area3Screen(encounteredCreatures, this);
         area3Screen.setVisible(true);
     }
 
+    public void startBattle(Creature activeCreature, Creature enemy, Inventory userInventory) {
+        // Initialize battle properties
+        this.activeCreature = activeCreature;
+        this.enemy = enemy;
+        this.userInventory = userInventory;
+        this.enemyHealth = 50;
+        this.userActions = 3;
+
+        BattleScreen battleScreen = new BattleScreen(this);
+        battleScreen.setVisible(true);
+    }
+
     // Add other methods and data relevant to the game logic
+
+    // Battle-related methods
+
+    public Creature getActiveCreature() {
+        return activeCreature;
+    }
+
+    public void setActiveCreature(Creature SelectedCreature) {
+        this.activeCreature = SelectedCreature;
+    }
+
+    public Creature getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(Creature enemy) {
+        this.enemy = enemy;
+    }
+
+
+    public int getEnemyHealth() {
+        return enemyHealth;
+    }
+
+    public void setEnemyHealth(int health) {
+        this.enemyHealth = health;
+    }
+
+    public int[] getPosition() {
+        return this.position;
+    }
+
+    public Inventory getUserInventory() {
+        return userInventory;
+    }
+
+    public int getUserActions() {
+        return userActions;
+    }
+
+    public int reduceUserActions() {
+       return userActions--;
+    }
+
+    public void reduceEnemyHealth(int damage) {
+        enemyHealth -= damage;
+    }
 }

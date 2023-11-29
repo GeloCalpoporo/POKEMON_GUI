@@ -9,6 +9,9 @@ import java.util.List;
 public class GameView extends JFrame {
     private GameModel model;
     private GameController controller;
+    private Creature activeCreature;
+    private Inventory userInventory;
+    private JLabel activeCreatureLabel; // Added JLabel for active creature information
 
     public GameView(GameModel model, GameController controller) {
         this.model = model;
@@ -16,40 +19,40 @@ public class GameView extends JFrame {
         initGUI();
     }
 
+    public Inventory getUserInventory() {
+        return userInventory;
+    }
+
     private void initGUI() {
         // Set layout for the frame
         setLayout(new BorderLayout());
 
+
         // Create a label for displaying active creature information
-        JLabel activeCreatureLabel = new JLabel("Active Creature: None");
-        add(activeCreatureLabel, BorderLayout.NORTH);
+        /*
+        activeCreature = model.getActiveCreature();
+        activeCreatureLabel = new JLabel("Active Creature: " + activeCreature.getName());
+        add(activeCreatureLabel, BorderLayout.NORTH); */
 
         // Create buttons for different actions
-        JButton viewInventoryButton = new JButton("View Inventory");
+
         JButton exploreAreaButton = new JButton("Explore Area");
         JButton evolveCreatureButton = new JButton("Evolve Creature");
+        JButton viewInventoryButton = new JButton("View Inventory");
 
         // Create a panel for buttons
         JPanel buttonPanel = new JPanel();
-        buttonPanel.add(viewInventoryButton);
+
         buttonPanel.add(exploreAreaButton);
         buttonPanel.add(evolveCreatureButton);
+        buttonPanel.add(viewInventoryButton);
 
         add(buttonPanel, BorderLayout.CENTER);
 
         // Add action listeners to buttons
-        viewInventoryButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Notify the controller to display inventory
-                controller.displayInventory();
-            }
-        });
-
         exploreAreaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Notify the controller to display area options
                 controller.displayAreaOptions();
             }
         });
@@ -57,8 +60,14 @@ public class GameView extends JFrame {
         evolveCreatureButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Notify the controller to display evolve options
                 controller.displayEvolveOptions();
+            }
+        });
+
+        viewInventoryButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.openInventoryScreen();
             }
         });
 
@@ -66,7 +75,7 @@ public class GameView extends JFrame {
         setTitle("Game GUI");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
-        setLocationRelativeTo(null); // Center the frame on the screen
+        setLocationRelativeTo(null);
     }
 
     public void setController(GameController controller) {
@@ -77,5 +86,8 @@ public class GameView extends JFrame {
         // Update the active creature label
         // This method can be called by the controller to update the view
         // with the active creature information
+    }
+    public void updateActiveCreatureLabel(String creatureInfo) {
+        activeCreatureLabel.setText("Active Creature: " + creatureInfo);
     }
 }

@@ -64,6 +64,10 @@ public class CreatureList {
         return this.creatures;
     }
 
+    public List<Creature> getEl1Creatures() {
+        return this.el1Creatures;
+    }
+
     /**
      * Retrieves a random EL1 (Evolution Level 1) creature from the collection.
      *

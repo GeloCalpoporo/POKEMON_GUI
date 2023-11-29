@@ -37,6 +37,10 @@ public class Inventory {
         this.activeCreature = activeCreature;
     }
 
+    public List<Creature> getcreatures(){
+        return this.creatures;
+    }
+
     /**
      * Retrieves the currently active creature from the inventory.
      *
@@ -46,23 +50,8 @@ public class Inventory {
         return this.activeCreature;
     }
 
-    /**
-     * Lists all creatures in the inventory.
-     */
-    public void listInventory() {
-        for (int var1 = 0; var1 < this.creatures.size(); ++var1) {
-            System.out.println("Creature #" + (var1 + 1));
-            System.out.println(this.creatures.get(var1));
-            System.out.println("----------------------");
-        }
 
-        System.out.println("Active Creature:");
-        if (this.activeCreature != null) {
-            System.out.println(this.activeCreature);
-        } else {
-            System.out.println("No active creature selected.");
-        }
-    }
+
 
     /**
      * Changes the active creature in the inventory based on the provided index.
@@ -96,21 +85,5 @@ public class Inventory {
         return creatures;
     }
 
-    public void prompt() {
-        Scanner inputScanner = new Scanner(System.in);
-        System.out.println("Change Active Creature? Yes/No");
-        String changeActive = inputScanner.next();
-        if (changeActive.equalsIgnoreCase("Yes")) {
-            if (this.creatures.size() > 1) { // Check if there is more than one creature in the inventory
-                System.out.println("Enter the index of the creature you want to set as the active creature:");
-                int index = inputScanner.nextInt();
-                changeActiveCreature(index - 1);
-                System.out.println("Active creature changed.");
-            } else {
-                System.out.println("You cannot change the active creature because you have only one creature.");
-            }
-        } else {
-            System.out.println("Active creature remains unchanged.");
-        }
-    }
+
 }

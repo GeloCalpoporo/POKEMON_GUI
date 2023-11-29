@@ -69,9 +69,16 @@ public class GameController {
             int indexCreature2 = creature2ComboBox.getSelectedIndex();
 
             // Notify the model to evolve creatures
-            model.evolveCreatures(indexCreature1, indexCreature2);
         }
     }
 
-}
 
+    public void openInventoryScreen() {
+        InventoryScreen inventoryScreen = new InventoryScreen(model.getInventory(), model);
+    }
+
+    // Add a method to update the active creature label in the view
+    public void updateActiveCreatureLabel(String creatureInfo) {
+        view.updateActiveCreatureLabel(creatureInfo);
+    }
+}
