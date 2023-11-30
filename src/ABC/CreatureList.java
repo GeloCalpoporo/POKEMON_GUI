@@ -1,5 +1,4 @@
 package ABC;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -24,7 +23,7 @@ public class CreatureList {
         this.creatures.add(new Creature(2, "CANDAROS", "Fire", "B", 3));
         this.creatures.add(new Creature(3, "PARFWIT", "Fire", "C", 1));
         this.creatures.add(new Creature(3, "PARFURE", "Fire", "C", 2));
-        this.creatures.add(new Creature(3, "PAREFELURE", "Fire", "C", 3));
+        this.creatures.add(new Creature(3, "PARFELURE", "Fire", "C", 3));
 
         this.creatures.add(new Creature(4, "BROWNISAUR", "Grass", "D", 1));
         this.creatures.add(new Creature(4, "CHOCOSAUR", "Grass", "D", 2));
@@ -64,24 +63,12 @@ public class CreatureList {
         return this.creatures;
     }
 
+    /**
+     * Retrieves a list of EL1 creatures available in the collection.
+     *
+     * @return A list of EL1 creatures.
+     */
     public List<Creature> getEl1Creatures() {
         return this.el1Creatures;
-    }
-
-    /**
-     * Retrieves a random EL1 (Evolution Level 1) creature from the collection.
-     *
-     * @return A random EL1 creature, or null if there are no EL1 creatures available.
-     */
-    public Creature getRandomEL1Creature() {
-        // Check if the EL1 creatures list is not empty
-        if (!el1Creatures.isEmpty()) {
-            Random random = new Random();
-            int randomIndex = random.nextInt(el1Creatures.size());
-            return el1Creatures.get(randomIndex);
-        } else {
-            // Handle the case where there are no EL1 creatures
-            return null; // You can return null or handle it differently
-        }
     }
 }

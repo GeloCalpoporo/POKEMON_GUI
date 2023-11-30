@@ -5,53 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" name="Changes" comment="UPDATED">
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/BROWNISAUR.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/CANDAROS.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/CHOCOFLUFF.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/CHOCOLISH.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/CHOCOLITE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/CHOCOSAUR.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/CHOCOWOOL.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/CROBERRY.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/DEWICE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/FRUBAT.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/FUDGASAUR.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/GOLBERRY.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/ICESUNDAE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/KIRLICAKE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/MALTS.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/OSHACONE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/PARFELURE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/PARFURE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/PARFWIT.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/PIETOISE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/SAMURCONE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/SQUIRPIE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/STRAWANDER.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/STRAWIZARD.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/STRAWLEON.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/TARTORTLE.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Creature_List/VELVEVOIR.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023_8_20_pm_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_11_2023_8_20_pm__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ABC/CreatureImages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ABC/InventoryScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ABC/PokemonGameGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BROWNISAUR.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CANDAROS.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CHOCOFLUFF.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CHOCOLISH.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CHOCOLITE.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CHOCOSAUR.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CHOCOWOOL.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CROBERRY.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DEWICE.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FRUBAT.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FUDGASAUR.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GOLBERRY.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ICESUNDAE.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/KIRLICAKE.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MALTS.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OSHACONE.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PARFELURE.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PARFURE.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PARFWIT.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PIETOISE.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SAMURCONE.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SQUIRPIE.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/STRAWANDER.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/STRAWIZARD.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/STRAWLEON.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TARTORTLE.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/VELVEVOIR.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/Area1Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/Area1Screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABC/BattlePhase.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/BattleScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/BattleScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ABC/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/Creature.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/CreatureList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/CreatureList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABC/EvolveEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ABC/Evolution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/Evolution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ABC/EvolutionResult.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABC/GameGUI.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABC/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/GameView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/Inventory.java" afterDir="false" />
     </list>
     <list id="2179e233-d290-44de-abf7-847b693e08e7" name="Changes by Basti" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ABC/Area1Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/Area1Screen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/Area2Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/Area2Screen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/Area3Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/Area3Screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABC/BattleScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/BattleScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABC/CreatureList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/CreatureList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/Direction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABC/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ABC/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/GameView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ABC/MAINGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABC/MAINGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,12 +72,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "GeloCalpoporo"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;GeloCalpoporo&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -84,87 +86,37 @@
       </UrlAndAccount>
     </option>
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/ABC/GameController.java">
-      <ranges>
-        <range start1="14" end1="14" start2="14" end2="35" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-        <range start1="71" end1="72" start2="92" end2="92" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="75" end1="76" start2="95" end2="99" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="77" end1="77" start2="100" end2="105" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ABC/BattleScreen.java">
-      <ranges>
-        <range start1="6" end1="6" start2="6" end2="11" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-        <range start1="9" end1="15" start2="14" end2="15" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="16" end1="16" start2="16" end2="23" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-        <range start1="23" end1="23" start2="30" end2="33" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-        <range start1="24" end1="30" start2="34" end2="36" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="35" end1="38" start2="41" end2="44" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="72" end1="81" start2="78" end2="90" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-        <range start1="82" end1="83" start2="91" end2="97" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-        <range start1="87" end1="87" start2="101" end2="120" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="88" end1="88" start2="121" end2="126" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="89" end1="90" start2="127" end2="128" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="91" end1="94" start2="129" end2="130" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="97" end1="100" start2="133" end2="164" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="102" end1="102" start2="166" end2="171" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-        <range start1="103" end1="103" start2="172" end2="174" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-        <range start1="104" end1="105" start2="175" end2="176" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="106" end1="108" start2="177" end2="179" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="120" end1="132" start2="191" end2="198" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="135" end1="138" start2="201" end2="215" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-        <range start1="141" end1="144" start2="218" end2="221" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="146" end1="150" start2="223" end2="223" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="151" end1="154" start2="224" end2="224" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ABC/CreatureList.java">
-      <ranges>
-        <range start1="26" end1="27" start2="26" end2="27" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-        <range start1="65" end1="65" start2="65" end2="69" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="66" end1="66" start2="70" end2="73" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/ABC/Area1Screen.java">
-      <ranges>
-        <range start1="0" end1="0" start2="0" end2="1" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="6" end1="6" start2="7" end2="8" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="7" end1="7" start2="9" end2="10" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="9" end1="10" start2="12" end2="13" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="13" end1="15" start2="16" end2="18" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="18" end1="19" start2="21" end2="27" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="35" end1="39" start2="43" end2="47" changelist="2179e233-d290-44de-abf7-847b693e08e7" />
-        <range start1="45" end1="45" start2="53" end2="70" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="48" end1="49" start2="73" end2="90" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="66" end1="67" start2="107" end2="107" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="73" end1="74" start2="113" end2="113" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="75" end1="76" start2="114" end2="114" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="81" end1="82" start2="119" end2="119" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="91" end1="92" start2="128" end2="128" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-        <range start1="98" end1="98" start2="134" end2="175" changelist="025ea532-cd3b-4222-91e7-c6e55c5d1c8a" />
-      </ranges>
-    </file>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2Yk66nf5oq84oCFMtnwh6R50aPm" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/Angelo Calpoporo/IdeaProjects/POKEMON_GUI/src/Main.java",
     "settings.editor.selected.configurable": "CodeWithMe",
     "vue.rearranger.settings.migration": "true"
@@ -172,6 +124,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Angelo Calpoporo\IdeaProjects\POKEMON_GUI\src" />
       <recent name="C:\Users\Angelo Calpoporo\IdeaProjects\POKEMON_GUI\res\Creature_List" />
       <recent name="C:\Users\Angelo Calpoporo\IdeaProjects\POKEMON_GUI\res\Family_A" />
       <recent name="C:\Users\Angelo Calpoporo\IdeaProjects\POKEMON_GUI\res\img" />
@@ -185,7 +138,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1701057059553</updated>
-      <workItem from="1701057060606" duration="56179000" />
+      <workItem from="1701057060606" duration="82311000" />
+      <workItem from="1701322248098" duration="21202000" />
     </task>
     <task id="LOCAL-00001" summary="A">
       <option name="closed" value="true" />
@@ -259,7 +213,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701087367814</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="UPDATED">
+      <option name="closed" value="true" />
+      <created>1701246949341</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1701246949341</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,6 +239,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="A" />
     <MESSAGE value="UPDATED" />
     <option name="LAST_COMMIT_MESSAGE" value="UPDATED" />

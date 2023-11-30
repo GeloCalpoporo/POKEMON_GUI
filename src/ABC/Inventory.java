@@ -2,7 +2,6 @@ package ABC;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * The Inventory class manages the user's collection of creatures.
@@ -37,8 +36,13 @@ public class Inventory {
         this.activeCreature = activeCreature;
     }
 
-    public List<Creature> getcreatures(){
-        return this.creatures;
+    /**
+     * Retrieves the list of creatures in the inventory.
+     *
+     * @return The list of creatures in the inventory.
+     */
+    public List<Creature> getCreatures() {
+        return creatures;
     }
 
     /**
@@ -49,9 +53,6 @@ public class Inventory {
     public Creature getActiveCreature() {
         return this.activeCreature;
     }
-
-
-
 
     /**
      * Changes the active creature in the inventory based on the provided index.
@@ -67,23 +68,38 @@ public class Inventory {
         }
     }
 
-
+    /**
+     * Deletes the specified creature from the inventory.
+     *
+     * @param creature The creature to delete from the inventory.
+     */
     public void deleteCreature(Creature creature) {
         creatures.remove(creature);
     }
 
+    /**
+     * Adds a creature to the inventory.
+     *
+     * @param creature The creature to add to the inventory.
+     */
     public void addInventory(Creature creature) {
         creatures.add(creature);
     }
 
     /**
-     * Retrieves the list of creatures in the inventory.
+     * Swaps the positions of two creatures in the inventory.
      *
-     * @return The list of creatures in the inventory.
+     * @param index1 The index of the first creature.
+     * @param index2 The index of the second creature.
      */
-    public List<Creature> getCreatures() {
-        return creatures;
+    public void swapCreatures(int index1, int index2) {
+        if (index1 >= 0 && index1 < creatures.size() && index2 >= 0 && index2 < creatures.size()) {
+            // Swap the creatures at the specified indices
+            Creature temp = creatures.get(index1);
+            creatures.set(index1, creatures.get(index2));
+            creatures.set(index2, temp);
+        } else {
+            System.out.println("Invalid indices for creature swap.");
+        }
     }
-
-
 }

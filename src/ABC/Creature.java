@@ -1,5 +1,4 @@
 package ABC;
-
 /**
  * The Creature class represents a creature with various attributes and
  * characteristics.
@@ -38,7 +37,10 @@ public class Creature {
     }
 
     public Creature(String name, String type, String family, int evolutionLevel) {
-        this(0, name, type, family, evolutionLevel, new int[]{0, 0});
+        this.name = name;
+        this.type = type;
+        this.family = family;
+        this.evolutionLevel = evolutionLevel;
     }
 
     /**
@@ -50,6 +52,7 @@ public class Creature {
         return userChoice;
     }
 
+
     /**
      * Get the name of the creature.
      *
@@ -59,6 +62,9 @@ public class Creature {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
     /**
      * Get the type of the creature.
      *
@@ -67,6 +73,7 @@ public class Creature {
     public String getType() {
         return type;
     }
+
 
     /**
      * Get the family of the creature.
@@ -86,6 +93,10 @@ public class Creature {
         return evolutionLevel;
     }
 
+    public void setEvolutionLevel(int evolutionLevel) {
+        this.evolutionLevel = evolutionLevel;
+    }
+
     /**
      * Get the position of the creature.
      *
@@ -93,6 +104,16 @@ public class Creature {
      */
     public int[] getPosition() {
         return position;
+    }
+
+    /**
+     * Get the image path of the creature.
+     *
+     * @return The image path of the creature.
+     */
+    public String getImagePath() {
+        // Customize this method based on your image naming convention and folder structure
+        return "/" + name + ".jpg";
     }
 
     /**

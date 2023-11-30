@@ -2,6 +2,7 @@ package ABC;
 
 import javax.swing.*;
 import java.util.List;
+import java.awt.*;
 
 public class GameController {
     private GameModel model;
@@ -12,17 +13,42 @@ public class GameController {
         this.view = view;
     }
 
-    public void displayInventory() {
-        // Display inventory information using JOptionPane
-        StringBuilder inventoryText = new StringBuilder("Inventory:\n");
-        for (Creature creature : model.getInventory().getCreatures()) {
-            inventoryText.append(creature.getName()).append("\n");
-        }
-
-        JOptionPane.showMessageDialog(view, inventoryText.toString(), "Inventory", JOptionPane.INFORMATION_MESSAGE);
+    private void  setPokemonUIStyle() {
+        // Customize UI elements with arcade-style styles
+        UIManager.put("OptionPane.background", new Color(220, 186, 74)); // Black background
+        UIManager.put("Panel.background", new Color(236, 93, 93));
+        UIManager.put("OptionPane.messageFont", new Font("Press Start 2P", Font.BOLD, 14)); // Use a retro font
+        UIManager.put("OptionPane.messageForeground", new Color(255, 255, 255)); // White text
+        UIManager.put("OptionPane.buttonFont", new Font("Press Start 2P", Font.PLAIN, 12));
+        UIManager.put("OptionPane.buttonBackground", new Color(255, 69, 0)); // Red buttons
+        UIManager.put("OptionPane.buttonForeground", new Color(255, 255, 255)); // White button text
     }
 
+    public void pickStarterCreature() {
+        setPokemonUIStyle();
+        List<Creature> starterCreatures = model.getCreatureList().getEl1Creatures();
+
+        // Convert List<Creature> to array for JComboBox
+        Creature[] creaturesArray = starterCreatures.toArray(new Creature[0]);
+
+        JComboBox<Creature> starterCreatureComboBox = new JComboBox<>(creaturesArray);
+
+        Object[] message = { "Choose your starter creature:", starterCreatureComboBox };
+
+        int option = JOptionPane.showConfirmDialog(view, message, "Pick Starter Creature", JOptionPane.OK_CANCEL_OPTION);
+
+        if (option == JOptionPane.OK_OPTION) {
+            int selectedIndex = starterCreatureComboBox.getSelectedIndex();
+            if (selectedIndex >= 0 && selectedIndex < starterCreatures.size()) {
+                Creature selectedStarter = starterCreatures.get(selectedIndex);
+                model.setActiveCreature(selectedStarter);
+            }
+        }
+    }
+
+
     public void displayAreaOptions() {
+        setPokemonUIStyle();
         // Display area exploration options using JOptionPane
         Object[] options = {"Area 1", "Area 2", "Area 3"};
         int choice = JOptionPane.showOptionDialog(view, "Choose an area to explore:", "Explore Area",
@@ -48,37 +74,16 @@ public class GameController {
     }
 
     public void displayEvolveOptions() {
-        // Display creature evolution options using JOptionPane
-        List<Creature> encounteredCreatures = model.getEncounteredCreatures();
-
-        // Convert List<Creature> to array for JComboBox
-        Creature[] creaturesArray = encounteredCreatures.toArray(new Creature[0]);
-
-        JComboBox<Creature> creature1ComboBox = new JComboBox<>(creaturesArray);
-        JComboBox<Creature> creature2ComboBox = new JComboBox<>(creaturesArray);
-
-        Object[] message = {
-                "Select the first creature:", creature1ComboBox,
-                "Select the second creature:", creature2ComboBox
-        };
-
-        int option = JOptionPane.showConfirmDialog(view, message, "Evolve Creature", JOptionPane.OK_CANCEL_OPTION);
-
-        if (option == JOptionPane.OK_OPTION) {
-            int indexCreature1 = creature1ComboBox.getSelectedIndex();
-            int indexCreature2 = creature2ComboBox.getSelectedIndex();
-
-            // Notify the model to evolve creatures
-        }
+        setPokemonUIStyle();
+        // Create an instance of Evolution and call the appropriate method
+        Evolution evolution = new Evolution(model);
+        evolution.displayEvolveOptions(view);
     }
 
 
     public void openInventoryScreen() {
+        setPokemonUIStyle();
         InventoryScreen inventoryScreen = new InventoryScreen(model.getInventory(), model);
     }
 
-    // Add a method to update the active creature label in the view
-    public void updateActiveCreatureLabel(String creatureInfo) {
-        view.updateActiveCreatureLabel(creatureInfo);
-    }
 }
