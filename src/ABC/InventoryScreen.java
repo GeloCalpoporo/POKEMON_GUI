@@ -1,17 +1,20 @@
 package ABC;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InventoryScreen {
     private Inventory inventory;
     private JFrame frame;
-    private JLabel activeCreatureImageLabel; // Added for active creature image
-    private JLabel activeCreatureDetailsLabel; // Display active creature details
+    private JLabel activeCreatureImageLabel;
+    private JLabel activeCreatureDetailsLabel;
     private CreatureImages creatureImages;
+    private CreatureImages activeCreatureImage;
     private GameModel model;
     private String imageDirectory = "res\\Creatures_List\\";
 
@@ -21,41 +24,78 @@ public class InventoryScreen {
 
         frame = new JFrame("Creature Inventory");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1200, 600); // Adjusted size
+        frame.setSize(1200, 600);
         frame.setLayout(new BorderLayout());
 
-        // Left Panel (Active Creature)
         JPanel leftPanel = new JPanel(new BorderLayout());
         leftPanel.setBorder(BorderFactory.createTitledBorder("Active Creature"));
 
         activeCreatureImageLabel = new JLabel();
-        leftPanel.add(activeCreatureImageLabel, BorderLayout.NORTH); // Place image label at the top
+        leftPanel.add(activeCreatureImageLabel, BorderLayout.NORTH);
+
+        activeCreatureImage =  new CreatureImages(model.getActiveCreature());
+        leftPanel.add(activeCreatureImage, BorderLayout.CENTER);
 
         activeCreatureDetailsLabel = new JLabel("", SwingConstants.CENTER);
         activeCreatureDetailsLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-        leftPanel.add(activeCreatureDetailsLabel, BorderLayout.CENTER); // Place details label below image
+        leftPanel.add(activeCreatureDetailsLabel, BorderLayout.SOUTH);
 
-        // Right Panel (List of Creatures)
         JPanel rightPanel = new JPanel(new BorderLayout());
         rightPanel.setBorder(BorderFactory.createTitledBorder("List of Creatures"));
 
         creatureImages = new CreatureImages(inventory.getCreatures());
-        creatureImages.setPreferredSize(new Dimension(580, 400)); // Adjusted width
+        creatureImages.setPreferredSize(new Dimension(580, 400));
         rightPanel.add(new JScrollPane(creatureImages), BorderLayout.CENTER);
 
-        // Set Preferred Size for Left and Right Panels
         leftPanel.setPreferredSize(rightPanel.getPreferredSize());
 
-        // Add Left and Right Panels to the Frame
         frame.add(leftPanel, BorderLayout.WEST);
         frame.add(rightPanel, BorderLayout.EAST);
 
-        // Buttons Panel (Top)
         JButton changeActiveButton = new JButton("Change Active Creature");
         changeActiveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 showActiveCreatureDialog();
+            }
+        });
+
+        JButton filterByTypeButton = new JButton("Filter by Type");
+        JPanel typeFilterPanel = new JPanel(new GridLayout(1, 2));
+        typeFilterPanel.add(filterByTypeButton);
+
+        JButton filterFireButton = new JButton("Fire Type");
+        JButton filterGrassButton = new JButton("Grass Type");
+        JButton filterWaterButton = new JButton("Water Type");
+        JButton filterAllTypesButton = new JButton("All Types"); // Added button for All Types
+
+
+        filterFireButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filterCreaturesByType("Fire");
+            }
+        });
+
+        filterGrassButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filterCreaturesByType("Grass");
+            }
+        });
+
+        filterWaterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filterCreaturesByType("Water");
+            }
+        });
+
+        filterAllTypesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Show all creatures (remove type filter)
+                creatureImages.updateCreatureListImages(model.getInventory().getCreatures());
             }
         });
 
@@ -67,35 +107,31 @@ public class InventoryScreen {
             }
         });
 
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 7)); // Adjusted layout to accommodate new button
         buttonPanel.add(changeActiveButton);
+        buttonPanel.add(filterFireButton);
+        buttonPanel.add(filterGrassButton);
+        buttonPanel.add(filterWaterButton);
+        buttonPanel.add(filterAllTypesButton); // Added button for All Types
         buttonPanel.add(goBackButton);
 
+        frame.add(typeFilterPanel, BorderLayout.NORTH);
         frame.add(buttonPanel, BorderLayout.NORTH);
-
-        updateActiveCreatureLabel();
-
         frame.setVisible(true);
     }
 
-    private void updateActiveCreatureLabel() {
-        Creature activeCreature = model.getActiveCreature();
 
-        if (activeCreature != null) {
-            String imagePath = imageDirectory + activeCreature.getName() + ".jpg";
-            ImageIcon icon = createImageIcon(imagePath);
-            activeCreatureImageLabel.setIcon(icon);
+    private void filterCreaturesByType(String selectedType) {
+        List<Creature> allCreatures = model.getInventory().getCreatures();
+        List<Creature> filteredCreatures = new ArrayList<>();
 
-            // Update active creature details label
-            String detailsText = String.format("<html><div style='text-align: center;'>"
-                            + "<img src='" + imagePath + "'/><br>"
-                            + "Name: %s<br>Type: %s<br>Family: %s<br>Evolution Level: %s</div></html>",
-                    activeCreature.getName(), activeCreature.getType(), activeCreature.getFamily(), activeCreature.getEvolutionLevel());
-            activeCreatureDetailsLabel.setText(detailsText);
-        } else {
-            activeCreatureImageLabel.setIcon(null);
-            activeCreatureDetailsLabel.setText("");
+        for (Creature creature : allCreatures) {
+            if (creature.getType().equalsIgnoreCase(selectedType)) {
+                filteredCreatures.add(creature);
+            }
         }
+
+        creatureImages.updateCreatureListImages(filteredCreatures);
     }
 
     private void showActiveCreatureDialog() {
@@ -124,8 +160,9 @@ public class InventoryScreen {
                                 model.getInventory().deleteCreature(creature);
                                 model.getInventory().addCreature(model.getActiveCreature());
                                 model.setActiveCreature(creature);
-                                updateActiveCreatureLabel();
                                 updateCreaturesComboBox(creaturesComboBox);
+                                updateActiveCreatureImage();
+                                updateCreatureListImages();
                                 dialogFrame.dispose();
                             }
                             break;
@@ -154,6 +191,14 @@ public class InventoryScreen {
         }
     }
 
+    private void updateActiveCreatureImage() {
+        activeCreatureImage.updateActiveCreatureImage(model.getActiveCreature());
+    }
+
+    private void updateCreatureListImages() {
+        creatureImages.updateCreatureListImages(model.getInventory().getCreatures());
+    }
+
     private void updateCreaturesComboBox(JComboBox<String> comboBox) {
         comboBox.removeAllItems();
         List<Creature> creatures = model.getInventory().getCreatures();
@@ -162,16 +207,5 @@ public class InventoryScreen {
             comboBox.addItem(creature.getName());
         }
     }
-
-    private ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = getClass().getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
-        }
-    }
-
 
 }

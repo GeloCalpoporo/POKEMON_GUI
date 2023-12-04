@@ -52,6 +52,12 @@ public class Evolution {
         Creature selectedCreature1 = (Creature) creature1ComboBox.getSelectedItem();
         Creature selectedCreature2 = (Creature) creature2ComboBox.getSelectedItem();
 
+        // Check if the selected creatures are different
+        if (selectedCreature1.equals(selectedCreature2)) {
+            JOptionPane.showMessageDialog(view, "Please select different creatures for evolution.", "Invalid Selection", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         boolean success = evolveCreatures(selectedCreature1, selectedCreature2);
 
         if (success) {
@@ -65,7 +71,6 @@ public class Evolution {
     private boolean evolveCreatures(Creature creature1, Creature creature2) {
         if (isEligibleForEvolution(creature1, creature2)) {
             int newLevel = creature1.getEvolutionLevel() + 1;
-            model.getInventory().deleteCreature(creature1);
 
             switch (creature1.getName()) {
                 case "STRAWANDER":
@@ -125,11 +130,11 @@ public class Evolution {
                 default:
                     creature1.setName("idk");
             }
-            creature1.setEvolutionLevel(newLevel);
-            model.getInventory().deleteCreature(creature2);
-            model.getInventory().addCreature(creature1);
-
             evolvedCreature = creature1;
+            creature1.setEvolutionLevel(newLevel);
+            model.getInventory().deleteCreature(creature1);
+            model.getInventory().deleteCreature(creature2);
+            model.getInventory().addCreature(evolvedCreature);
 
             return true;
         }

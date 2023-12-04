@@ -42,6 +42,7 @@ public class GameController {
             if (selectedIndex >= 0 && selectedIndex < starterCreatures.size()) {
                 Creature selectedStarter = starterCreatures.get(selectedIndex);
                 model.setActiveCreature(selectedStarter);
+                view.setVisible(true);
             }
         }
     }

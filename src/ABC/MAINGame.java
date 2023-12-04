@@ -1,6 +1,18 @@
 package ABC;
 
+/**
+ * The MAINGame class contains the main method to launch the game application.
+ * It initializes the model, view, and controller components, setting up the initial state of the game.
+ *
+ * @author Jose Angelo Calpoporo
+ * @author Miguel Sebastian Carlos
+ */
 public class MAINGame {
+    /**
+     * The main method to start the game.
+     *
+     * @param args Command line arguments (not used in this application).
+     */
     public static void main(String[] args) {
         // Create the model
         GameModel model = new GameModel();
@@ -12,10 +24,7 @@ public class MAINGame {
         GameController controller = new GameController(model, view);
         view.setController(controller);
 
-        // Set the controller in the view
-        view.setController(controller);
-
-        // Display the GUI
-        view.setVisible(true);
+        // Call pickStarterCreature to prompt the user to choose a starter creature
+        controller.pickStarterCreature();
     }
 }

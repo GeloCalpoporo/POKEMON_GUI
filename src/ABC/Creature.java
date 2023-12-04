@@ -9,6 +9,7 @@ public class Creature {
     private String name;
     private String type;
     private String family;
+    private boolean activeCreature;
     private int evolutionLevel;
     private int[] position; // Added position attribute
 
@@ -106,15 +107,10 @@ public class Creature {
         return position;
     }
 
-    /**
-     * Get the image path of the creature.
-     *
-     * @return The image path of the creature.
-     */
-    public String getImagePath() {
-        // Customize this method based on your image naming convention and folder structure
-        return "/" + name + ".jpg";
+    public boolean isActive() {
+              return activeCreature;
     }
+
 
     /**
      * Returns a string representation of the creature.

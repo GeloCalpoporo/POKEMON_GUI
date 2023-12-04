@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Random;
 import java.util.List;
 
@@ -23,7 +25,6 @@ public class BattleScreen extends JFrame {
     private JProgressBar enemyHealthBar;
     private JLabel activeCreatureLabel;
     private JLabel enemyInfoLabel;
-    private JLabel enemyHealthLabel;
     private JButton attackButton;
     private JButton swapButton;
     private JButton catchButton;
@@ -80,12 +81,14 @@ public class BattleScreen extends JFrame {
             }
         });
 
+
         runButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 performRun();
             }
-        });
+        }); //PALITAN MO TO NG ITOWW-->
+
 
         creaturePanel = new JPanel();
         creaturePanel.setLayout(new GridLayout(5, 1));
@@ -192,7 +195,7 @@ public class BattleScreen extends JFrame {
      */
 
 
-    private void performCatch() {
+   private void performCatch() {
         if (userActions == 0) {
             JOptionPane.showMessageDialog(this, "You've reached the maximum number of attempts (3).");
             return;
@@ -203,8 +206,9 @@ public class BattleScreen extends JFrame {
 
         if (catchRate > Math.random()) {
             gameModel.getUserInventory().addCreature(gameModel.getEnemy());
+            gameModel.getUserInventory().addCreature(gameModel.getEnemy());
             JOptionPane.showMessageDialog(this, "You successfully caught the enemy!");
-            gameModel.setEnemyHealth(0); // Enemy is caught
+            gameModel.setEnemyHealth(0);
             updateUI();
         } else {
             JOptionPane.showMessageDialog(this, "Catch attempt failed.");
@@ -212,7 +216,6 @@ public class BattleScreen extends JFrame {
 
         checkBattleOutcome();
     }
-
 
 
     /**

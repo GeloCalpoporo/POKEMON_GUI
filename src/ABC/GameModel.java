@@ -55,14 +55,6 @@ public class GameModel {
         return creatureList;
     }
 
-    /**
-     * Retrieves the Evolution object responsible for managing creature evolution.
-     *
-     * @return The Evolution object handling creature evolution in the game.
-     */
-    public Evolution getEvolution() {
-        return evolution;
-    }
 
     /**
      * Initiates the exploration of Area 1 in the game.
@@ -110,21 +102,6 @@ public class GameModel {
         battleScreen.setVisible(true);
     }
 
-
-    /**
-     * Retrieves the player's captured creatures.
-     *
-     * @return The List of Creature objects representing the player's captured creatures.
-     */
-    public List<Creature> getCapturedCreatures() {
-        return inventory.getCreatures();
-    }
-
-    /**
-     * Retrieves the currently active creature in the game.
-     *
-     * @return The active creature controlled by the player.
-     */
     public Creature getActiveCreature() {
         return activeCreature;
     }
